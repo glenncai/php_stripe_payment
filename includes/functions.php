@@ -34,7 +34,7 @@ class Actions extends DB {
     
                 echo " <div class='col-lg-3 col-md-6'>
                             <div class='card shadow'>
-                                <img src='assets/uploads/products/{$product_image}' alt='{$product_name}' class='card-img-top p-3'>
+                                <img src='assets/uploads/{$product_image}' alt='{$product_name}' class='card-img-top p-3'>
                                 <div class='card-body pt-0'>
                                 <h5 class='card-title'>{$product_name}</h5>
                                 <div class='card-text my-2'>{$product_desc}</div>

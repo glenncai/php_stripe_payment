@@ -38,7 +38,8 @@ if (isset($_POST['stripe_payment_process'])) {
                 'unit_amount' => $product_price,
                 'product_data' => [
                     'name' => $product_name,
-                    'images' => ['../../../assets/uploads/products/' . $product_image],
+                    // Image will not appear in localhost.
+                    'images' => [ '../../../assets/uploads/' . $product_image],
                 ],
             ],
             'quantity' => $product_quantity,

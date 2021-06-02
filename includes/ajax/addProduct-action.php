@@ -19,9 +19,9 @@ if (isset($_POST['add_product_form_submit'])) {
     $product_image_ext = explode('.', $product_image_name);
     $product_image_ext = strtolower(end($product_image_ext));
 
-    $upload_dir = '../../assets/uploads/';
+    $upload_dir = '../../assets/';
     $image_name = uniqid() . '.' . $product_image_ext;
-    $product_image_upload_dest = $upload_dir . 'products/' . $image_name;
+    $product_image_upload_dest = $upload_dir . 'uploads/' . $image_name;
 
     if ($actions->addProduct($product_name, $product_price, $product_desc, $image_name)) {
         // From 'product_image_temp' to 'product_image_upload_dest'
