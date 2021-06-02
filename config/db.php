@@ -9,7 +9,7 @@ class DB {
     private const DBNAME = 'stripe';
 
     // Public key from stripe
-    public const STRIPE_PUB_KEY = 'pk_test_51IxOsuLSda4DLiyJa09U1hXiLPtNZV59tgznWuOKlFWIaOLrp42xcast8jKgQY16OD0QFh3yILluZ0DIQAPD8BdP00639GN4aH';
+    public const STRIPE_PUB_KEY = 'YOUR PUBLIC API';
 
     // Secutiry key from stripe
     public const STRIPE_API_KEY = 'YOUR SECURITY API';
