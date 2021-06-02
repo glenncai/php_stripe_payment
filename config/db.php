@@ -12,7 +12,7 @@ class DB {
     public const STRIPE_PUB_KEY = 'pk_test_51IxOsuLSda4DLiyJa09U1hXiLPtNZV59tgznWuOKlFWIaOLrp42xcast8jKgQY16OD0QFh3yILluZ0DIQAPD8BdP00639GN4aH';
 
     // Secutiry key from stripe
-    public const STRIPE_API_KEY = 'sk_test_51IxOsuLSda4DLiyJyBQElkZk6jEz76sSkQ9EQ3CeoHctVyXwXOKfxxPJqEvIWbhosJClZyWxLaNeUhPcYfK28e0Q00GZe1YTvO';
+    public const STRIPE_API_KEY = 'YOUR SECURITY API';
 
     private $dsn = 'mysql:host=' . self::DBHSOT . ';dbname=' . self::DBNAME . '';
 
