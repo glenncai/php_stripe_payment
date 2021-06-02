@@ -23,4 +23,4 @@ $ composer require stripe/stripe-php
 ### Note: 
 
 * For the path, please always remember to use `_DIR_` for best practice.
-* If something wrong, feel free to check the `log` in stripe offcial website. 
+* If something wrong, feel free to check the `log` in stripe offcial website. You can find the syntax errors what you write for stripe payment details.
