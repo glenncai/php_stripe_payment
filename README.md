@@ -20,4 +20,7 @@ $ composer require stripe/stripe-php
 ```
 
 
-### Note: For the path, please always remember to use `_DIR_` for best practice.
+### Note: 
+
+* For the path, please always remember to use `_DIR_` for best practice.
+* If something wrong, feel free to check the `log` in stripe offcial website. 
