@@ -1,4 +1,11 @@
 {
+    "name": "glenn.cai/stripe_payment",
+    "authors": [
+        {
+            "name": "Glenn Cai",
+            "email": "glenncai.work@gmail.com"
+        }
+    ],
     "require": {
         "stripe/stripe-php": "^7.80"
     }

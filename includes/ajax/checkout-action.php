@@ -1,9 +1,9 @@
 <?php
 
-require_once __DIR__ . '../../functions.php';
-require_once __DIR__ . '../../util.php';
-require_once __DIR__. '../../../config/db.php';
-require_once __DIR__ . '../../../vendor/autoload.php';
+include __DIR__ . '../../../config/db.php';
+include __DIR__ . '../../functions.php';
+include __DIR__ . '../../util.php';
+include __DIR__ . '../../../vendor/autoload.php';
 
 $db = new DB;
 $actions = new Actions;
@@ -15,7 +15,7 @@ if (isset($_POST['stripe_payment_process'])) {
     $product = $actions->fetchProductById($id);
 
     $product_name = $product->product_name;
-    $product_price = $product->product_price;
+    $product_price = $product->product_price * 100;
     $product_desc = $product->product_desc;
     $product_image = $product->product_image;
 
@@ -23,11 +23,11 @@ if (isset($_POST['stripe_payment_process'])) {
 
 
     // Set the security key
-    \Stripe\Stripe::setApiKey('DB::STRIPE_API_KEY');
+    \Stripe\Stripe::setApiKey(DB::STRIPE_API_KEY);
 
     header('Content-Type: application/json');
 
-    $YOUR_DOMAIN = 'http://localhost/stripe_payment';
+    $YOUR_DOMAIN = 'https://localhost/stripe_payment';
 
     // Something wrong here
     $checkout_session = \Stripe\Checkout\Session::create([
@@ -42,16 +42,13 @@ if (isset($_POST['stripe_payment_process'])) {
                 ],
             ],
             'quantity' => $product_quantity,
-            'desscription' => $product_desc
+            'description' => $product_desc
         ]],
         'mode' => 'payment',
         'success_url' => $YOUR_DOMAIN . '/success.php',
         'cancel_url' => $YOUR_DOMAIN . '/cancel.php',
     ]);
 
-    echo json_encode($product_name);
+    echo json_encode(['id' => $checkout_session->id]);
 
-    // echo json_encode($checkout_session->id);
-
-    // echo json_encode(['id' => $checkout_session->id]);
 }

@@ -1,6 +1,4 @@
 <?php
-require_once __DIR__ . '/config/db.php';
-require_once __DIR__ . '/includes/util.php';
 require_once __DIR__ . '/includes/functions.php';
 
 $actions = new Actions;
@@ -39,6 +37,8 @@ $db = new DB;
             // Create an instance of the Stripe object with your publishable API key
             let stripe = Stripe('<?=  DB::STRIPE_PUB_KEY ?>');
 
+            console.log(stripe);
+
             // When we click the button with the class 'buy_now_btn'
             $(document).on('click', '.buy_now_btn', function(e) {
                 // Get the corresponding product id
@@ -48,19 +48,17 @@ $db = new DB;
                 $.ajax({
                     url: "includes/ajax/checkout-action.php",
                     method: "POST",
+                    dataType: "json",
                     data: {
                         id: id,
                         // We use this one to treat whether the checkotu btn is clicked
                         stripe_payment_process: 1
                     },
-                    dataType: "json",
-                    success: function(response) {
+                    success: function(session) {
                         // redirect to stripe checkout page
-                        console.log(response);
-                        // return stripe.redirectToCheckout({
-                        //     // id comes from server
-                        //     sessionId: response.id
-                        // });
+                        return stripe.redirectToCheckout({
+                            sessionId: session.id
+                        });
                     }
                 });
             });
