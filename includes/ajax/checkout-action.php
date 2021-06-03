@@ -34,7 +34,7 @@ if (isset($_POST['stripe_payment_process'])) {
         'payment_method_types' => ['card'],
         'line_items' => [[
             'price_data' => [
-                'currency' => 'usd',
+                'currency' => 'hkd',
                 'unit_amount' => $product_price,
                 'product_data' => [
                     'name' => $product_name,
@@ -46,7 +46,8 @@ if (isset($_POST['stripe_payment_process'])) {
             'description' => $product_desc
         ]],
         'mode' => 'payment',
-        'success_url' => $YOUR_DOMAIN . '/success.php',
+        // CHECKOUT_SESSION_ID is from offical term. And id is the corresponding product id
+        'success_url' => $YOUR_DOMAIN . '/success.php?session_id={CHECKOUT_SESSION_ID}&id=' . $id,
         'cancel_url' => $YOUR_DOMAIN . '/cancel.php',
     ]);
 

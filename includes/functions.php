@@ -57,6 +57,41 @@ class Actions extends DB {
         $row = $stmt->fetch();
         return $row;
     }
+
+    // existing payment order method
+    public function existingOrders($session_id) {
+        $sql = 'SELECT * FROM orders WHERE session_id = :session_id';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':session_id', $session_id, PDO::PARAM_STR);
+        $stmt->execute();
+        $count = $stmt->rowCount();
+
+        if ($count > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // insert payment details into database
+    public function insertPaymentInfo($customer_name, $customer_email, $item_name, $item_number, $item_price, $currency, $txn_id, $payment_status, $session_id) {
+        $sql = 'INSERT INTO orders (name, email, item_name, item_number, item_price, currency, txn_id, payment_status, session_id) VALUES (:name, :email, :item_name, :item_number, :item_price, :currency, :txn_id, :payment_status, :session_id)';
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':name', $customer_name, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $customer_email, PDO::PARAM_STR);
+        $stmt->bindParam(':item_name', $item_name, PDO::PARAM_STR);
+        $stmt->bindParam(':item_number', $item_number, PDO::PARAM_STR);
+        $stmt->bindParam(':item_price', $item_price, PDO::PARAM_STR);
+        $stmt->bindParam(':currency', $currency, PDO::PARAM_STR);
+        $stmt->bindParam(':txn_id', $txn_id, PDO::PARAM_STR);
+        $stmt->bindParam(':payment_status', $payment_status, PDO::PARAM_STR);
+        $stmt->bindParam(':session_id', $session_id, PDO::PARAM_STR);
+
+        $stmt->execute();
+        return true;
+    }
+
 }
 
 ?>

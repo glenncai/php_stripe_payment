@@ -37,8 +37,6 @@ $db = new DB;
             // Create an instance of the Stripe object with your publishable API key
             let stripe = Stripe('<?=  DB::STRIPE_PUB_KEY ?>');
 
-            console.log(stripe);
-
             // When we click the button with the class 'buy_now_btn'
             $(document).on('click', '.buy_now_btn', function(e) {
                 // Get the corresponding product id
