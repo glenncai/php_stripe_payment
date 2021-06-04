@@ -31,4 +31,8 @@ Solution: Go to [Google myacount](myaccount.google.com) -> "Sign-in & security" 
 
 * For the path, please always remember to use `_DIR_` for best practice.
 * If something wrong, feel free to check the `log` in stripe offcial website. You can find the syntax errors what you write for stripe payment details.
-
+* The login and register system is not secure. It just for the payment method testing. (People cannot buy when they are not login).
+* Edit your website domain in `checkout-action.php` file by changing `$YOUR_DOMAIN` variable. 
+* Add your stripe public key and secret key in `db.php` file. 
+* If you want to open login pattern, edit the variable `$setEmail` in `db.php` file to be true.
+* For the sender email and password in PHPMailer system, edit your own username and password in `db.php` file.

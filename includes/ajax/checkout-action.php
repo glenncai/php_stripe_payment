@@ -9,6 +9,8 @@ $db = new DB;
 $actions = new Actions;
 $util = new Util;
 
+$failNumber = 1;
+
 // Handle stripe payment process via ajax request
 if (isset($_POST['stripe_payment_process'])) {
     $id = $util->filterInput($_POST['id']);
@@ -27,7 +29,8 @@ if (isset($_POST['stripe_payment_process'])) {
 
     header('Content-Type: application/json');
 
-    $YOUR_DOMAIN = 'https://localhost/stripe_payment';
+    // Your should change you path in here
+    $YOUR_DOMAIN = 'YOUR DOMAIN';
 
     // Something wrong here
     $checkout_session = \Stripe\Checkout\Session::create([
@@ -51,6 +54,11 @@ if (isset($_POST['stripe_payment_process'])) {
         'cancel_url' => $YOUR_DOMAIN . '/cancel.php',
     ]);
 
-    echo json_encode(['id' => $checkout_session->id]);
+    if (!empty($_SESSION['email']) && $_SESSION['email'] != null) {
+        echo json_encode(['id' => $checkout_session->id]);
+    } else {
+        echo $failNumber;
+    }
+
 
 }

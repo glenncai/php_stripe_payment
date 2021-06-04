@@ -12,7 +12,13 @@
                 <a class="nav-link" href="add-product.php">Add</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
+                <a class="nav-link" href="orders.php">Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="login.php">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="register.php">Register</a>
             </li>
         </ul>
     </div>

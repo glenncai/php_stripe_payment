@@ -56,3 +56,8 @@ body {
     color: white;
     background: #000;
 }
+
+.productImg {
+    width: 80%;
+    border-radius: 14px;
+}

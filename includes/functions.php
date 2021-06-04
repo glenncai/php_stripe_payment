@@ -92,6 +92,52 @@ class Actions extends DB {
         return true;
     }
 
+    public function getOrders() {
+        $sql = 'SELECT * FROM orders';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        
+        while ($row = $stmt->fetch()) {
+            $order_id = $row->id;
+            $customer_name = $row->name;
+            $customer_email = $row->email;
+            $item_name = $row->item_name;
+            $item_number = $row->item_number;
+            $item_price = number_format($row->item_price, 0, '.', ',');
+            $currency = $row->currency;
+            $txn_id = $row->txn_id;
+            $payment_status = $row->payment_status;
+            $paidDate = $row->created;
+
+            echo  "
+                        <tr>
+                            <th scope='row'>{$order_id}</th>
+                            <td>{$customer_name}</td>
+                            <td>{$customer_email}</td>
+                            <td>{$item_number}</td>
+                            <td>{$item_name}</td>
+                            <td>{$item_price}</td>
+                            <td>{$currency}</td>
+                            <td>{$txn_id}</td>
+                            <td>{$payment_status}</td>
+                            <td>{$paidDate}</td>
+                        </tr>
+            ";
+        }
+    }
+
+    public function error() {
+        if (!empty($_SESSION['error'])) {
+            $errorMessage = $_SESSION['error'];
+
+            echo "
+                <div class='alert alert-danger' role='alert'>
+                    {$errorMessage}
+                </div>
+            ";
+        }
+    }
+
 }
 
 ?>

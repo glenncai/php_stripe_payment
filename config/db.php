@@ -1,5 +1,18 @@
 <?php
 
+session_start();
+
+// simulate the login pattern
+// If set, it means that the customer has been logined in.
+$setEmail = true;
+
+if ($setEmail) {
+    $_SESSION["email"] = "user@email.com";
+}else {
+    $_SESSION["email"] = "";
+}
+
+
 /********************* Connect the DB in here *********************/
 
 class DB {
@@ -9,16 +22,16 @@ class DB {
     private const DBNAME = 'stripe';
 
     // Sender email
-    public const USERNAME = 'glenncai.study@gmail.com';
+    public const USERNAME = 'YOUR GOOGLE EMAIL';
 
     // Sender password
-    public const PASSWORD = 'Cai99020366.';
+    public const PASSWORD = 'YOUR PASSWORD';
 
     // Public key from stripe
-    public const STRIPE_PUB_KEY = 'pk_test_51IxOsuLSda4DLiyJa09U1hXiLPtNZV59tgznWuOKlFWIaOLrp42xcast8jKgQY16OD0QFh3yILluZ0DIQAPD8BdP00639GN4aH';
+    public const STRIPE_PUB_KEY = 'YOUR PUBLIC KEY';
 
     // Secutiry key from stripe
-    public const STRIPE_API_KEY = 'sk_test_51IxOsuLSda4DLiyJyBQElkZk6jEz76sSkQ9EQ3CeoHctVyXwXOKfxxPJqEvIWbhosJClZyWxLaNeUhPcYfK28e0Q00GZe1YTvO';
+    public const STRIPE_API_KEY = 'YOUR SECRET KEY';
 
     private $dsn = 'mysql:host=' . self::DBHSOT . ';dbname=' . self::DBNAME . '';
 

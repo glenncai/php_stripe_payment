@@ -160,7 +160,7 @@ if (!empty($_GET['session_id'])) {
                         <h4 class="font-weight-bold">Product Information</h4><hr>
                         <p><b>Product ID : </b><?php echo $product_id; ?></p>
                         <p><b>Product Name : </b><?php echo $item_name; ?></p>
-                        <img src='assets/uploads/<?php echo $product_image ?>'>
+                        <img src='assets/uploads/<?php echo $product_image ?>' class="productImg">
                         <?php endif; ?>
                     </div>
                     <a href="index.php" class="btn">Back to home</a>
