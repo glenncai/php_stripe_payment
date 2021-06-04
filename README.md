@@ -24,7 +24,7 @@ $ composer require phpmailer/phpmailer
 ## Fix bug
 For `Message could not be sent. Mailer Error: SMTP Error: Could not authenticate.` PHPMailer error.
 
-Solution: Go to [Google myacount](myaccount.google.com) -> "Sign-in & security" -> "Apps with account access", and turn "Allow less secure apps" to "ON".
+Solution: Go to [Google myacount](https://myaccount.google.com/) -> "Sign-in & security" -> "Apps with account access", and turn "Allow less secure apps" to "ON".
 
 
 ### Note: 
