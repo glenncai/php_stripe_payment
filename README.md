@@ -36,3 +36,31 @@ Solution: Go to [Google myacount](https://myaccount.google.com/) -> "Sign-in & s
 * Add your stripe public key and secret key in `db.php` file. 
 * If you want to open login pattern, edit the variable `$setEmail` in `db.php` file to be true.
 * For the sender email and password in PHPMailer system, edit your own username and password in `db.php` file.
+
+
+## Future
+If you want to provide the donation function when customers checkout, we can add one more `'price_data'` field in `checkout-action.php` file.
+
+```
+'line_items' => [[
+    'price_data' => [
+        'currency' => 'usd',
+        'unit_amount' => $product_price,
+        'product_data' => [
+            'name' => $product_name,
+            'images' => ['../../../assets/uploads/products/' . $product_image],
+        ],
+    ],
+    'quantity' => $product_quantity,
+    'desscription' => $product_desc
+],[
+  'price_data' => [
+        'currency' => 'usd',
+        'unit_amount' => $donation,
+        'product_data' => [
+            'name' => 'donation',
+        ],
+    ],
+    'quantity' => 1,
+]],
+```
